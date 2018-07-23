@@ -1,0 +1,3 @@
+Hibernate: create table event_members (id integer not null, events_id integer, primary key (id))
+Hibernate: create table events (id integer not null, date_of_event timestamp, long_desc varchar(255), name varchar(255), short_desc varchar(255), primary key (id))
+Hibernate: create table members (id integer not null, email varchar(255), first_name varchar(255), last_name varchar(255), user_name varchar(255), member_id integer, primary key (id))
