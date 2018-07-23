@@ -24,7 +24,7 @@ public class EventServiceImpl implements EventService {
 	/* (non-Javadoc)
 	 * @see com.kvn.expensetracker.services.EventService#createEvent(com.kvn.expensetracker.domainentities.Event)
 	 */
-	@Autowired
+
 
 
 	@Override
