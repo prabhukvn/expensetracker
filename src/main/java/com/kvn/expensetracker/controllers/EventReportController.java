@@ -13,18 +13,32 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kvn.expensetracker.domainentities.EventReport;
 import com.kvn.expensetracker.services.EventReportService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EventReportController.
+ */
 @RestController
 @RequestMapping("/api")
 public class EventReportController {
+	
+	/** The logger. */
 	public static Logger LOGGER = LoggerFactory.getLogger(EventReportController.class);
 
+	/** The event report service. */
 	@Autowired
 	private EventReportService eventReportService;
+
+	/**
+	 * Gets the report.
+	 *
+	 * @param eventId the event id
+	 * @return the report
+	 */
 	@GetMapping("/report/event/{eventId}")
-	public ResponseEntity<EventReport> getReport(@PathVariable("eventId") String eventId){
+	public ResponseEntity<EventReport> getReport(@PathVariable("eventId") String eventId) {
 		LOGGER.debug(">>>>>>>>Generating Report for event {}>>>>>>>>", eventId);
 		EventReport eventReport = eventReportService.generateReport(eventId);
 		return new ResponseEntity<EventReport>(eventReport, HttpStatus.OK);
-		
+
 	}
 }

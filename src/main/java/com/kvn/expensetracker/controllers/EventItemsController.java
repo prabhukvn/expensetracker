@@ -7,20 +7,30 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kvn.expensetracker.domainentities.EventItem;
 import com.kvn.expensetracker.services.EventItemService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EventItemsController.
+ */
 @RestController
 @RequestMapping("/api")
 public class EventItemsController {
 
+	/** The event item service. */
 	@Autowired
 	private EventItemService eventItemService;
 	
+	/**
+	 * Creates the.
+	 *
+	 * @param eventItem the event item
+	 * @return the response entity
+	 */
 	@PostMapping(value="/eventItems", produces = "application/json", consumes="application/json")
 	public ResponseEntity<EventItem> create(EventItem eventItem) {
 		
@@ -38,7 +48,12 @@ public class EventItemsController {
 //		
 //	}
 	
-	@GetMapping(value="/eventItems", produces="application/json")
+	/**
+ * Gets the all event items.
+ *
+ * @return the all event items
+ */
+@GetMapping(value="/eventItems", produces="application/json")
 	public ResponseEntity<List<EventItem>> getAllEventItems(){
 		
 		List<EventItem> eventItems = eventItemService.findAll();

@@ -13,25 +13,41 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kvn.expensetracker.domainentities.Member;
 import com.kvn.expensetracker.services.MembersService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MembersController.
+ */
 @RestController
 @RequestMapping("/api")
 public class MembersController {
-	
+
+	/** The members service. */
 	@Autowired
 	private MembersService membersService;
 
-	@PostMapping(value="/members", produces="application/json")
-	public ResponseEntity<Member> create(Member member){
-		
+	/**
+	 * Creates the.
+	 *
+	 * @param member the member
+	 * @return the response entity
+	 */
+	@PostMapping(value = "/members", produces = "application/json")
+	public ResponseEntity<Member> create(Member member) {
+
 		Member newMember = membersService.create(member);
-		return new ResponseEntity<Member>(newMember,HttpStatus.CREATED);
+		return new ResponseEntity<Member>(newMember, HttpStatus.CREATED);
 	}
-	
-	@GetMapping(value="/members", produces="application/json")
-	public ResponseEntity<List<Member>> getAll (){
+
+	/**
+	 * Gets the all.
+	 *
+	 * @return the all
+	 */
+	@GetMapping(value = "/members", produces = "application/json")
+	public ResponseEntity<List<Member>> getAll() {
 		List<Member> members = membersService.findAll();
-		return new ResponseEntity<List<Member>>(members,HttpStatus.OK);
+		return new ResponseEntity<List<Member>>(members, HttpStatus.OK);
 	}
-	//TODO
+	// TODO
 	// GET PUT and DELETE will follwo
 }

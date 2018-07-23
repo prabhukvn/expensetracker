@@ -13,24 +13,41 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kvn.expensetracker.domainentities.EventItemToMemberAmount;
 import com.kvn.expensetracker.services.EventItemToMemberAmountService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EventItemToMemberAmountController.
+ */
 @RestController
 @RequestMapping("/api")
 public class EventItemToMemberAmountController {
 
+	/** The event item to member amount service. */
 	@Autowired
 	private EventItemToMemberAmountService eventItemToMemberAmountService;
-	@PostMapping(value="/eventItemToMemberAmount",produces="application/json",consumes="application/json")
-	public ResponseEntity<EventItemToMemberAmount> create(EventItemToMemberAmount itemMemberAmount){
-		
+
+	/**
+	 * Creates the.
+	 *
+	 * @param itemMemberAmount the item member amount
+	 * @return the response entity
+	 */
+	@PostMapping(value = "/eventItemToMemberAmount", produces = "application/json", consumes = "application/json")
+	public ResponseEntity<EventItemToMemberAmount> create(EventItemToMemberAmount itemMemberAmount) {
+
 		EventItemToMemberAmount item = eventItemToMemberAmountService.create(itemMemberAmount);
 		return new ResponseEntity<EventItemToMemberAmount>(item, HttpStatus.CREATED);
 	}
-	
-	@GetMapping(value="/eventItemToMemberAmount",produces="application/json")
-	public ResponseEntity<List<EventItemToMemberAmount>> getAll(){
-	
+
+	/**
+	 * Gets the all.
+	 *
+	 * @return the all
+	 */
+	@GetMapping(value = "/eventItemToMemberAmount", produces = "application/json")
+	public ResponseEntity<List<EventItemToMemberAmount>> getAll() {
+
 		List<EventItemToMemberAmount> allEntities = eventItemToMemberAmountService.findAll();
 		return new ResponseEntity<List<EventItemToMemberAmount>>(allEntities, HttpStatus.OK);
 	}
-	
+
 }

@@ -12,20 +12,31 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ExpensetrackerApplication.
+ * 
+ * This is the main application to start service.
+ */
 @SpringBootApplication
 @EnableJpaRepositories
 @EnableSwagger2
 @EnableAutoConfiguration
 public class ExpensetrackerApplication {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(ExpensetrackerApplication.class, args);
 	}
 
 	/**
 	 * Swagger Documentation.
-	 * @return
-	 *  
+	 *
+	 * @return the docket
 	 */
 	@Bean
     public Docket api() { 
