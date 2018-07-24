@@ -35,9 +35,22 @@ public class Event {
 	@JoinColumn(name="event_id")
 	private List<EventItem> eventItems;
 	
+	public Event() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	
+	public Event(String name, String shortDesc, String longDesc, Date dateOfEvent) {
+		super();
+		this.name = name;
+		this.shortDesc = shortDesc;
+		this.longDesc = longDesc;
+		this.dateOfEvent = dateOfEvent;
+	}
+
+
+
 	/**
 	 * Gets the id.
 	 *
