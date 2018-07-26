@@ -2,11 +2,11 @@ package com.kvn.expensetracker.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.kvn.expensetracker.domainentities.Member;
+import com.kvn.expensetracker.entities.MemberEntity;
 
 /**
  * The Interface MembersRepository.
  */
-public interface MembersRepository extends JpaRepository<Member, Integer> {
+public interface MembersRepository extends JpaRepository<MemberEntity, Integer> {
 
 }

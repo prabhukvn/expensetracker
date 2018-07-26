@@ -1,4 +1,6 @@
-package com.kvn.expensetracker.domainentities;
+package com.kvn.expensetracker.domain;
+
+import com.kvn.expensetracker.entities.EventItemToMemberAmountEntity;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -10,7 +12,7 @@ public class EventReport {
 	private String eventName;
 
 	/** The event item to member amount. */
-	private EventItemToMemberAmount eventItemToMemberAmount;
+	private EventItemToMemberAmountEntity eventItemToMemberAmount;
 
 	/**
 	 * Gets the event name.
@@ -41,7 +43,7 @@ public class EventReport {
 	 * void setMemberCostList(List<MemberCost> memberCostList) { this.memberCostList
 	 * = memberCostList; }
 	 */
-	public EventItemToMemberAmount getEventItemToMemberAmount() {
+	public EventItemToMemberAmountEntity getEventItemToMemberAmount() {
 		return eventItemToMemberAmount;
 	}
 
@@ -50,7 +52,7 @@ public class EventReport {
 	 *
 	 * @param eventItemToMemberAmount the new event item to member amount
 	 */
-	public void setEventItemToMemberAmount(EventItemToMemberAmount eventItemToMemberAmount) {
+	public void setEventItemToMemberAmount(EventItemToMemberAmountEntity eventItemToMemberAmount) {
 		this.eventItemToMemberAmount = eventItemToMemberAmount;
 	}
 

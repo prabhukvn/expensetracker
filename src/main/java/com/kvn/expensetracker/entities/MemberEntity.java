@@ -1,4 +1,4 @@
-package com.kvn.expensetracker.domainentities;
+package com.kvn.expensetracker.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import javax.persistence.Id;
  * The Class Member.
  */
 @Entity
-public class Member {
+public class MemberEntity {
 
 	/** The id. */
 	@Id
@@ -33,7 +33,7 @@ public class Member {
 	@Column
 	private String email;
 
-	public Member(String firstName, String lastName, String userName, String email) {
+	public MemberEntity(String firstName, String lastName, String userName, String email) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -42,7 +42,7 @@ public class Member {
 	}
 
 
-	public Member() {
+	public MemberEntity() {
 		// TODO Auto-generated constructor stub
 	}
 	

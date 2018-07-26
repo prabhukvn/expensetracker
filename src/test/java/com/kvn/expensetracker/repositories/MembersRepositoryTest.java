@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.kvn.expensetracker.domainentities.Member;
+import com.kvn.expensetracker.entities.MemberEntity;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -61,9 +61,9 @@ public class MembersRepositoryTest {
 	@Transactional
 	public void testShouldInsertMembersIntoRepository() {
 
-		Member prabhu = new Member("prabhu", "kvn", "prabhukvn@gmail.com", "prabhukvn@gmail.com");
+		MemberEntity prabhu = new MemberEntity("prabhu", "kvn", "prabhukvn@gmail.com", "prabhukvn@gmail.com");
 		prabhu = membersRepository.saveAndFlush(prabhu);
-		Member storedPrabhu = membersRepository.findById(prabhu.getId()).get();
+		MemberEntity storedPrabhu = membersRepository.findById(prabhu.getId()).get();
 		assertEquals(storedPrabhu.getFirstName(),prabhu.getFirstName());
 
 	}

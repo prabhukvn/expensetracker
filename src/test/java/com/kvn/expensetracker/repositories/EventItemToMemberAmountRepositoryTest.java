@@ -2,6 +2,9 @@ package com.kvn.expensetracker.repositories;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -11,10 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.kvn.expensetracker.domainentities.EventItem;
-import com.kvn.expensetracker.domainentities.EventItemToMemberAmount;
-import com.kvn.expensetracker.domainentities.Member;
-import com.kvn.expensetracker.domainentities.MemberAmount;
+import com.kvn.expensetracker.entities.EventItemEntity;
+import com.kvn.expensetracker.entities.EventItemToMemberAmountEntity;
+import com.kvn.expensetracker.entities.MemberEntity;
+import com.kvn.expensetracker.entities.MemberAmountEntity;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -73,28 +76,30 @@ public class EventItemToMemberAmountRepositoryTest {
 	public void testShouldAttachMemberAmountToEventItem() {
 
 		//1. create member
-		Member member = new Member("prabhu", "kvn", "prabhukvn@gmail.com", "prabhukvn@gmail.com");
+		MemberEntity member = new MemberEntity("prabhu", "kvn", "prabhukvn@gmail.com", "prabhukvn@gmail.com");
 		member = membersRepository.saveAndFlush(member);
 		
 		// 2. create amount 
-		MemberAmount memberAmount = new MemberAmount();
+		List<MemberAmountEntity> memberAmounts = new ArrayList<>();
+		MemberAmountEntity memberAmount = new MemberAmountEntity();
 		memberAmount.setAmountPaid(15000);
 		memberAmount.setMemberId(member.getId());
+		memberAmounts.add(memberAmount);
 		
 		memberAmount = memberAmountRepository.saveAndFlush(memberAmount);
 		assertNotNull(memberAmount.getId());
 		
 		// 3 create event item
-		EventItem eventItem = new EventItem();
+		EventItemEntity eventItem = new EventItemEntity();
 		eventItem.setDesc("Movie tickets");
 		eventItem.setName("Tickets");
 		eventItem.setTotalEventItemCost(15000.00);
 		eventItem = eventItemRepository.saveAndFlush(eventItem);
 		
 		// attach eventItemt to member and member amount
-		EventItemToMemberAmount eventItemToMemberAmount = new EventItemToMemberAmount();
+		EventItemToMemberAmountEntity eventItemToMemberAmount = new EventItemToMemberAmountEntity();
 		eventItemToMemberAmount.setEventItemId(eventItem.getId());
-		eventItemToMemberAmount.setMemeberAmount(memberAmount);
+		eventItemToMemberAmount.setMemeberAmounts(memberAmounts);
 		
 		eventItemToMemberAmountRepository.saveAndFlush(eventItemToMemberAmount);
 		

@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kvn.expensetracker.domainentities.EventItem;
+import com.kvn.expensetracker.entities.EventItemEntity;
 import com.kvn.expensetracker.repositories.EventItemRepository;
 
 // TODO: Auto-generated Javadoc
@@ -26,7 +26,7 @@ public class EventItemServiceImpl implements EventItemService {
 	 */
 	@Override
 	@Transactional
-	public EventItem create(EventItem eventItem) {
+	public EventItemEntity create(EventItemEntity eventItem) {
 		return eventItemRepository.save(eventItem);
 	}
 
@@ -34,7 +34,7 @@ public class EventItemServiceImpl implements EventItemService {
 	 * @see com.kvn.expensetracker.services.EventItemService#findAll()
 	 */
 	@Override
-	public List<EventItem> findAll() {
+	public List<EventItemEntity> findAll() {
 		// TODO Auto-generated method stub
 		return eventItemRepository.findAll();
 	}

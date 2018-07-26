@@ -2,7 +2,7 @@ package com.kvn.expensetracker.services;
 
 import java.util.List;
 
-import com.kvn.expensetracker.domainentities.Event;
+import com.kvn.expensetracker.entities.EventEntity;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -16,7 +16,7 @@ public interface EventService {
 	 * @param event the event
 	 * @return the event
 	 */
-	public Event createEvent(Event event);
+	public EventEntity createEvent(EventEntity event);
 
 	/**
 	 * Update event.
@@ -24,14 +24,14 @@ public interface EventService {
 	 * @param event the event
 	 * @return the event
 	 */
-	Event updateEvent(Event event);
+	EventEntity updateEvent(EventEntity event);
 
 	/**
 	 * Gets the all events.
 	 *
 	 * @return the all events
 	 */
-	public List<Event> getAllEvents();
+	public List<EventEntity> getAllEvents();
 
 	/**
 	 * Gets the event.
@@ -39,6 +39,6 @@ public interface EventService {
 	 * @param eventId the event id
 	 * @return the event
 	 */
-	public Event getEvent(Integer eventId);
+	public EventEntity getEvent(Integer eventId);
 
 }

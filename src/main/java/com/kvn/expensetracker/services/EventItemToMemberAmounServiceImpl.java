@@ -7,8 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kvn.expensetracker.domainentities.EventItemToMemberAmount;
-import com.kvn.expensetracker.domainentities.MemberAmount;
+import com.kvn.expensetracker.entities.EventItemToMemberAmountEntity;
+import com.kvn.expensetracker.entities.MemberAmountEntity;
 import com.kvn.expensetracker.repositories.EventItemToMemberAmountRepository;
 import com.kvn.expensetracker.repositories.MemberAmountRepository;
 
@@ -32,10 +32,11 @@ public class EventItemToMemberAmounServiceImpl implements EventItemToMemberAmoun
 	 */
 	@Override
 	@Transactional
-	public EventItemToMemberAmount create(EventItemToMemberAmount itemMemberAmount) {
+	public EventItemToMemberAmountEntity create(EventItemToMemberAmountEntity itemMemberAmount) {
 		// TODO Auto-generated method stub
-		MemberAmount memberAmount = itemMemberAmount.getMemeberAmount();
-		memberAmountRepository.saveAndFlush(memberAmount);
+		List<MemberAmountEntity> memberAmounts = itemMemberAmount.getMemeberAmounts();
+		memberAmountRepository.saveAll(memberAmounts);
+		memberAmountRepository.flush();
 		return eventItemToMemberAmountRepository.save(itemMemberAmount);
 	}
 
@@ -43,7 +44,7 @@ public class EventItemToMemberAmounServiceImpl implements EventItemToMemberAmoun
 	 * @see com.kvn.expensetracker.services.EventItemToMemberAmountService#findAll()
 	 */
 	@Override
-	public List<EventItemToMemberAmount> findAll() {
+	public List<EventItemToMemberAmountEntity> findAll() {
 		// TODO Auto-generated method stub
 		return eventItemToMemberAmountRepository.findAll();
 	}

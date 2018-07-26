@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kvn.expensetracker.domainentities.EventItem;
+import com.kvn.expensetracker.entities.EventItemEntity;
 import com.kvn.expensetracker.services.EventItemService;
 
 // TODO: Auto-generated Javadoc
@@ -32,9 +32,9 @@ public class EventItemsController {
 	 * @return the response entity
 	 */
 	@PostMapping(value="/eventItems", produces = "application/json", consumes="application/json")
-	public ResponseEntity<EventItem> create(EventItem eventItem) {
+	public ResponseEntity<EventItemEntity> create(EventItemEntity eventItem) {
 		
-		EventItem newEventItem = eventItemService.create(eventItem);
+		EventItemEntity newEventItem = eventItemService.create(eventItem);
 		return new ResponseEntity<>(newEventItem, HttpStatus.CREATED);
 		
 		
@@ -54,10 +54,10 @@ public class EventItemsController {
  * @return the all event items
  */
 @GetMapping(value="/eventItems", produces="application/json")
-	public ResponseEntity<List<EventItem>> getAllEventItems(){
+	public ResponseEntity<List<EventItemEntity>> getAllEventItems(){
 		
-		List<EventItem> eventItems = eventItemService.findAll();
-		return new ResponseEntity<List<EventItem>>(eventItems, HttpStatus.OK);
+		List<EventItemEntity> eventItems = eventItemService.findAll();
+		return new ResponseEntity<List<EventItemEntity>>(eventItems, HttpStatus.OK);
 	}
 	//TODO
 	//GET PUT DELET will follow

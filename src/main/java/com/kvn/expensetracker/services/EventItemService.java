@@ -2,7 +2,7 @@ package com.kvn.expensetracker.services;
 
 import java.util.List;
 
-import com.kvn.expensetracker.domainentities.EventItem;
+import com.kvn.expensetracker.entities.EventItemEntity;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -16,13 +16,13 @@ public interface EventItemService {
 	 * @param eventItem the event item
 	 * @return the event item
 	 */
-	EventItem create(EventItem eventItem);
+	EventItemEntity create(EventItemEntity eventItem);
 
 	/**
 	 * Find all.
 	 *
 	 * @return the list
 	 */
-	List<EventItem> findAll();
+	List<EventItemEntity> findAll();
 
 }

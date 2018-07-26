@@ -1,4 +1,4 @@
-package com.kvn.expensetracker.domainentities;
+package com.kvn.expensetracker.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,7 +8,7 @@ import javax.persistence.Id;
  * The Class EventItem.
  */
 @Entity
-public class EventItem {
+public class EventItemEntity {
 	
 	/** The id. */
 	@Id
@@ -18,7 +18,7 @@ public class EventItem {
 	private String name;
 	
 	/** The desc. */
-	private String desc;
+	private String description;
 	
 	/** The total event item cost. */
 	private Double totalEventItemCost;
@@ -51,7 +51,7 @@ public String getName() {
 	 * @return the desc
 	 */
 	public String getDesc() {
-		return desc;
+		return description;
 	}
 	
 	/**
@@ -60,7 +60,7 @@ public String getName() {
 	 * @param desc the new desc
 	 */
 	public void setDesc(String desc) {
-		this.desc = desc;
+		this.description = description;
 	}
 	
 	/**

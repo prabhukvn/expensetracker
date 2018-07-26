@@ -17,10 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kvn.expensetracker.domainentities.Event;
-import com.kvn.expensetracker.domainentities.EventItem;
+import com.kvn.expensetracker.entities.EventEntity;
+import com.kvn.expensetracker.entities.EventItemEntity;
 import com.kvn.expensetracker.services.EventService;
-import com.kvn.expensetracker.services.EventToEventItemService;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -31,7 +30,7 @@ import com.kvn.expensetracker.services.EventToEventItemService;
 @Controller
 @RequestMapping("/api")
 public class EventsController {
-	
+
 	/** The logger. */
 	public static Logger LOGGER = LoggerFactory.getLogger(EventsController.class);
 
@@ -39,21 +38,18 @@ public class EventsController {
 	@Autowired
 	private EventService eventService;
 
-	/** The event to event item service. */
-	@Autowired
-	private EventToEventItemService eventToEventItemService;
-
 	/**
 	 * Creates the event.
 	 *
-	 * @param event the event
+	 * @param event
+	 *            the event
 	 * @return the response entity
 	 */
 	@PostMapping(value = "/events", produces = "application/json")
-	public ResponseEntity<Event> createEvent(Event event) {
+	public ResponseEntity<EventEntity> createEvent(EventEntity event) {
 
 		// TODO validate event
-		Event createEvent = eventService.createEvent(event);
+		EventEntity createEvent = eventService.createEvent(event);
 		return new ResponseEntity<>(createEvent, HttpStatus.CREATED);
 
 	}
@@ -61,14 +57,15 @@ public class EventsController {
 	/**
 	 * Update event.
 	 *
-	 * @param event the event
+	 * @param event
+	 *            the event
 	 * @return the response entity
 	 */
 	@PutMapping(value = "/events", produces = "application/json")
-	public ResponseEntity<Event> updateEvent(Event event) {
+	public ResponseEntity<EventEntity> updateEvent(EventEntity event) {
 
 		// TODO validate event
-		Event createEvent = eventService.updateEvent(event);
+		EventEntity createEvent = eventService.updateEvent(event);
 		return new ResponseEntity<>(createEvent, HttpStatus.OK);
 
 	}
@@ -79,10 +76,10 @@ public class EventsController {
 	 * @return the all event
 	 */
 	@GetMapping(value = "/events", produces = "application/json")
-	public ResponseEntity<List<Event>> getAllEvent() {
+	public ResponseEntity<List<EventEntity>> getAllEvent() {
 
 		// TODO validate event
-		List<Event> createEvent = eventService.getAllEvents();
+		List<EventEntity> createEvent = eventService.getAllEvents();
 		return new ResponseEntity<>(createEvent, HttpStatus.OK);
 
 	}
@@ -90,14 +87,15 @@ public class EventsController {
 	/**
 	 * Gets the event.
 	 *
-	 * @param eventId the event id
+	 * @param eventId
+	 *            the event id
 	 * @return the event
 	 */
 	@GetMapping(value = "/events/{eventId}", produces = "application/json")
-	public ResponseEntity<Event> getEvent(@PathVariable("eventId") String eventId) {
+	public ResponseEntity<EventEntity> getEvent(@PathVariable("eventId") String eventId) {
 
 		// TODO validate event
-		Event createEvent = eventService.getEvent(Integer.parseInt(eventId));
+		EventEntity createEvent = eventService.getEvent(Integer.parseInt(eventId));
 		if (createEvent != null) {
 			return new ResponseEntity<>(createEvent, HttpStatus.OK);
 		} else {
@@ -109,20 +107,26 @@ public class EventsController {
 	/**
 	 * Gets the event items.
 	 *
-	 * @param eventId the event id
+	 * @param eventId
+	 *            the event id
 	 * @return the event items
 	 */
 	@GetMapping(value = "/events/{eventId}/eventItems", produces = "application/json")
-	public ResponseEntity<List<EventItem>> getEventItems(@PathVariable("eventId") String eventId) {
+	public ResponseEntity<List<EventItemEntity>> getEventItems(@PathVariable("eventId") String eventId) {
 
 		// TODO validate event
-		List<EventItem> eventItems = eventToEventItemService.getEventItems(Integer.parseInt(eventId));
-		if (eventItems != null) {
-			return new ResponseEntity<>(eventItems, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+		EventEntity event = eventService.getEvent(Integer.parseInt(eventId));
+		if (null != event && null != event.getEventItems() && !event.getEventItems().isEmpty()) {
+			List<EventItemEntity> eventItems = event.getEventItems();
+			if (eventItems != null) {
+				return new ResponseEntity<>(eventItems, HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
 
+		} else {
+			return null;
+		}
 	}
 
 }

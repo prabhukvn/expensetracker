@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kvn.expensetracker.domainentities.Event;
+import com.kvn.expensetracker.entities.EventEntity;
 import com.kvn.expensetracker.repositories.EventsRepository;
 
 // TODO: Auto-generated Javadoc
@@ -29,7 +29,7 @@ public class EventServiceImpl implements EventService {
 
 	@Override
 	@Transactional
-	public Event createEvent(Event event) {
+	public EventEntity createEvent(EventEntity event) {
 		return eventsRepository.save(event);
 	}
 
@@ -37,7 +37,7 @@ public class EventServiceImpl implements EventService {
 	 * @see com.kvn.expensetracker.services.EventService#updateEvent(com.kvn.expensetracker.domainentities.Event)
 	 */
 	@Override
-	public Event updateEvent(Event event) {
+	public EventEntity updateEvent(EventEntity event) {
 		return eventsRepository.save(event);
 	}
 
@@ -45,7 +45,7 @@ public class EventServiceImpl implements EventService {
 	 * @see com.kvn.expensetracker.services.EventService#getAllEvents()
 	 */
 	@Override
-	public List<Event> getAllEvents() {
+	public List<EventEntity> getAllEvents() {
 		// TODO Auto-generated method stub
 		return eventsRepository.findAll();
 	}
@@ -54,7 +54,7 @@ public class EventServiceImpl implements EventService {
 	 * @see com.kvn.expensetracker.services.EventService#getEvent(java.lang.Integer)
 	 */
 	@Override
-	public Event getEvent(Integer eventId) {
+	public EventEntity getEvent(Integer eventId) {
 		// TODO Auto-generated method stub
 		return eventsRepository.findById(eventId).get();
 	}

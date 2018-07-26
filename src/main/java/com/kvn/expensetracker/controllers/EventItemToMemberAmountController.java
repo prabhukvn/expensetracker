@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kvn.expensetracker.domainentities.EventItemToMemberAmount;
+import com.kvn.expensetracker.entities.EventItemToMemberAmountEntity;
 import com.kvn.expensetracker.services.EventItemToMemberAmountService;
 
 // TODO: Auto-generated Javadoc
@@ -32,10 +32,10 @@ public class EventItemToMemberAmountController {
 	 * @return the response entity
 	 */
 	@PostMapping(value = "/eventItemToMemberAmount", produces = "application/json", consumes = "application/json")
-	public ResponseEntity<EventItemToMemberAmount> create(EventItemToMemberAmount itemMemberAmount) {
+	public ResponseEntity<EventItemToMemberAmountEntity> create(EventItemToMemberAmountEntity itemMemberAmount) {
 
-		EventItemToMemberAmount item = eventItemToMemberAmountService.create(itemMemberAmount);
-		return new ResponseEntity<EventItemToMemberAmount>(item, HttpStatus.CREATED);
+		EventItemToMemberAmountEntity item = eventItemToMemberAmountService.create(itemMemberAmount);
+		return new ResponseEntity<EventItemToMemberAmountEntity>(item, HttpStatus.CREATED);
 	}
 
 	/**
@@ -44,10 +44,10 @@ public class EventItemToMemberAmountController {
 	 * @return the all
 	 */
 	@GetMapping(value = "/eventItemToMemberAmount", produces = "application/json")
-	public ResponseEntity<List<EventItemToMemberAmount>> getAll() {
+	public ResponseEntity<List<EventItemToMemberAmountEntity>> getAll() {
 
-		List<EventItemToMemberAmount> allEntities = eventItemToMemberAmountService.findAll();
-		return new ResponseEntity<List<EventItemToMemberAmount>>(allEntities, HttpStatus.OK);
+		List<EventItemToMemberAmountEntity> allEntities = eventItemToMemberAmountService.findAll();
+		return new ResponseEntity<List<EventItemToMemberAmountEntity>>(allEntities, HttpStatus.OK);
 	}
 
 }

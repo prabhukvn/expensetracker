@@ -3,6 +3,7 @@ package com.kvn.expensetracker.repositories;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,11 +20,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.kvn.expensetracker.domainentities.Event;
-import com.kvn.expensetracker.domainentities.EventItem;
-import com.kvn.expensetracker.domainentities.EventItemToMemberAmount;
-import com.kvn.expensetracker.domainentities.Member;
-import com.kvn.expensetracker.domainentities.MemberAmount;
+import com.kvn.expensetracker.entities.EventEntity;
+import com.kvn.expensetracker.entities.EventItemEntity;
+import com.kvn.expensetracker.entities.EventItemToMemberAmountEntity;
+import com.kvn.expensetracker.entities.MemberEntity;
+import com.kvn.expensetracker.entities.MemberAmountEntity;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -102,9 +103,9 @@ public class EventsRepositoryTest {
 	@Transactional
 	public void testShouldInsertEventsRecords() {
 		// given
-		Event movie = new Event("Movie", "Weekend Movie", "Weekend Movie plan on occasion of my birthday", new Date());
-		Event lunch = new Event("Lunch", "Weekend Lunch", "Weekend Lunch plan on occasion of my birthday", new Date());
-		Event dinner = new Event("Dinner", "Weekend Dinner", "Weekend Dinner plan on occasion of my birthday",
+		EventEntity movie = new EventEntity("Movie", "Weekend Movie", "Weekend Movie plan on occasion of my birthday", new Date());
+		EventEntity lunch = new EventEntity("Lunch", "Weekend Lunch", "Weekend Lunch plan on occasion of my birthday", new Date());
+		EventEntity dinner = new EventEntity("Dinner", "Weekend Dinner", "Weekend Dinner plan on occasion of my birthday",
 				new Date());
 		Integer movieId = (Integer) entityManager.persistAndGetId(movie);
 		Integer lunchId = (Integer) entityManager.persistAndGetId(lunch);
@@ -112,9 +113,9 @@ public class EventsRepositoryTest {
 		entityManager.flush();
 
 		// when
-		Event storedMovie = eventsRepository.findById(movieId.intValue()).get();
-		Event storedLunch = eventsRepository.findById(lunchId).get();
-		Event storedDinner = eventsRepository.findById(dinnerId).get();
+		EventEntity storedMovie = eventsRepository.findById(movieId.intValue()).get();
+		EventEntity storedLunch = eventsRepository.findById(lunchId).get();
+		EventEntity storedDinner = eventsRepository.findById(dinnerId).get();
 		int allEvents = eventsRepository.findAll().size();
 
 		// then
@@ -130,7 +131,7 @@ public class EventsRepositoryTest {
 	@Test
 	@Transactional
 	public void testShouldFetchAllEvents() {
-		List<Event> events = eventsRepository.findAll();
+		List<EventEntity> events = eventsRepository.findAll();
 		if (null != events) {
 			events.forEach(event -> {
 				System.out.println(event);
@@ -141,11 +142,12 @@ public class EventsRepositoryTest {
 
 	public void testShouldCreateEventAndAllItsSubEntities() {
 		// 1. create member
-		Member member = new Member("prabhu", "kvn", "prabhukvn@gmail.com", "prabhukvn@gmail.com");
+		MemberEntity member = new MemberEntity("prabhu", "kvn", "prabhukvn@gmail.com", "prabhukvn@gmail.com");
 		member = membersRepository.saveAndFlush(member);
 
 		// 2. create amount
-		MemberAmount memberAmount = new MemberAmount();
+		List<MemberAmountEntity> memberAmounts = new ArrayList<>();
+		MemberAmountEntity memberAmount = new MemberAmountEntity();
 		memberAmount.setAmountPaid(15000);
 		memberAmount.setMemberId(member.getId());
 
@@ -153,20 +155,20 @@ public class EventsRepositoryTest {
 		assertNotNull(memberAmount.getId());
 
 		// 3 create event item
-		EventItem eventItem = new EventItem();
+		EventItemEntity eventItem = new EventItemEntity();
 		eventItem.setDesc("Movie tickets");
 		eventItem.setName("Tickets");
 		eventItem.setTotalEventItemCost(15000.00);
 		eventItem = eventItemRepository.saveAndFlush(eventItem);
 
 		// 4 attach eventItemt to member and member amount
-		EventItemToMemberAmount eventItemToMemberAmount = new EventItemToMemberAmount();
+		EventItemToMemberAmountEntity eventItemToMemberAmount = new EventItemToMemberAmountEntity();
 		eventItemToMemberAmount.setEventItemId(eventItem.getId());
-		eventItemToMemberAmount.setMemeberAmount(memberAmount);
+		eventItemToMemberAmount.setMemeberAmounts(memberAmounts);
 		eventItemToMemberAmountRepository.saveAndFlush(eventItemToMemberAmount);
 		
 		// 5 attach event item to event
-		Event event = new Event("Movie", "BirthDayMovie", "my Big Birthday Movie", new Date());
+		EventEntity event = new EventEntity("Movie", "BirthDayMovie", "my Big Birthday Movie", new Date());
 		event = eventsRepository.saveAndFlush(event);
 		assertNotNull(event.getId());
 		

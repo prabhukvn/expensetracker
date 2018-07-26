@@ -2,7 +2,7 @@ package com.kvn.expensetracker.services;
 
 import java.util.List;
 
-import com.kvn.expensetracker.domainentities.Member;
+import com.kvn.expensetracker.entities.MemberEntity;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -16,13 +16,13 @@ public interface MembersService {
 	 * @param member the member
 	 * @return the member
 	 */
-	Member create(Member member);
+	MemberEntity create(MemberEntity member);
 
 	/**
 	 * Find all.
 	 *
 	 * @return the list
 	 */
-	List<Member> findAll();
+	List<MemberEntity> findAll();
 
 }

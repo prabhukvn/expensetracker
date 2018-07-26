@@ -1,27 +1,30 @@
-package com.kvn.expensetracker.domainentities;
+package com.kvn.expensetracker.entities;
+
+import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class EventToEventItem.
+ * The Class EventItemToMemberAmount.
  */
 @Entity
-public class EventToEventItem {
+public class EventItemToMemberAmountEntity {
 
 	/** The id. */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-	/** The event id. */
-	private int eventId;
 	
 	/** The event item id. */
 	private int eventItemId;
+	
+	/** The memeber amount. */
+	@OneToMany
+	@JoinColumn(name="event_item_id")
+	private List<MemberAmountEntity> memeberAmounts;
 
 	/**
 	 * Gets the id.
@@ -42,24 +45,6 @@ public class EventToEventItem {
 	}
 
 	/**
-	 * Gets the event id.
-	 *
-	 * @return the event id
-	 */
-	public int getEventId() {
-		return eventId;
-	}
-
-	/**
-	 * Sets the event id.
-	 *
-	 * @param eventId the new event id
-	 */
-	public void setEventId(int eventId) {
-		this.eventId = eventId;
-	}
-
-	/**
 	 * Gets the event item id.
 	 *
 	 * @return the event item id
@@ -76,5 +61,15 @@ public class EventToEventItem {
 	public void setEventItemId(int eventItemId) {
 		this.eventItemId = eventItemId;
 	}
+
+	public List<MemberAmountEntity> getMemeberAmounts() {
+		return memeberAmounts;
+	}
+
+	public void setMemeberAmounts(List<MemberAmountEntity> memeberAmounts) {
+		this.memeberAmounts = memeberAmounts;
+	}
+
+	
 
 }

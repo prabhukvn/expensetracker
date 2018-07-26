@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.kvn.expensetracker.domainentities.EventItem;
+import com.kvn.expensetracker.entities.EventItemEntity;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -61,7 +61,7 @@ public class EventItemRepositoryTest {
 	@Transactional
 	public void testShouldInsertEventItemsIntoRepository() {
 		//given
-		EventItem eventItem = new EventItem();
+		EventItemEntity eventItem = new EventItemEntity();
 		eventItem.setName("Tickets");
 		eventItem.setDesc("Movie tickets for my birth day");
 		eventItem.setTotalEventItemCost(2500.00);
@@ -69,7 +69,7 @@ public class EventItemRepositoryTest {
 		eventItemRepository.flush();
 		
 		//when
-		EventItem storedEventItem = eventItemRepository.findById(eventItem.getId()).get();
+		EventItemEntity storedEventItem = eventItemRepository.findById(eventItem.getId()).get();
 		
 		//then
 		assertEquals(eventItem.getName(), storedEventItem.getName());

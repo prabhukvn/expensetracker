@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kvn.expensetracker.domainentities.Member;
+import com.kvn.expensetracker.entities.MemberEntity;
 import com.kvn.expensetracker.repositories.MembersRepository;
 
 // TODO: Auto-generated Javadoc
@@ -26,7 +26,7 @@ public class MembersServiceImpl implements MembersService {
 	 */
 	@Override
 	@Transactional
-	public Member create(Member member) {
+	public MemberEntity create(MemberEntity member) {
 		// TODO Auto-generated method stub
 		return memebersRepository.save(member);
 	}
@@ -35,7 +35,7 @@ public class MembersServiceImpl implements MembersService {
 	 * @see com.kvn.expensetracker.services.MembersService#findAll()
 	 */
 	@Override
-	public List<Member> findAll() {
+	public List<MemberEntity> findAll() {
 		// TODO Auto-generated method stub
 		return memebersRepository.findAll();
 	}

@@ -1,13 +1,12 @@
-package com.kvn.expensetracker.domainentities;
+package com.kvn.expensetracker.domain;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class MemberAmount.
  */
-@Entity
+@Deprecated
 public class MemberAmount {
 
 	/** The id. */
