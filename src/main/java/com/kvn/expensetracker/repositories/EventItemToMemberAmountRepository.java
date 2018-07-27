@@ -2,9 +2,9 @@ package com.kvn.expensetracker.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.kvn.expensetracker.entities.EventItemToMemberAmountEntity;
+import com.kvn.expensetracker.domainentities.EventItemToMemberAmount;
 
-public interface EventItemToMemberAmountRepository extends JpaRepository<EventItemToMemberAmountEntity, Integer>{
+public interface EventItemToMemberAmountRepository extends JpaRepository<EventItemToMemberAmount, Integer>{
 
 	/**
 	 * Find by event item id.
@@ -12,6 +12,6 @@ public interface EventItemToMemberAmountRepository extends JpaRepository<EventIt
 	 * @param id the id
 	 * @return the event item to member amount
 	 */
-	EventItemToMemberAmountEntity findByEventItemId(int id);
+	EventItemToMemberAmount findByEventItemId(int id);
 
 }

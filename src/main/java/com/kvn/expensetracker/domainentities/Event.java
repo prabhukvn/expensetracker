@@ -1,44 +1,46 @@
-package com.kvn.expensetracker.domain;
+package com.kvn.expensetracker.domainentities;
 
 import java.util.Date;
+import java.util.List;
 
-// TODO: Auto-generated Javadoc
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
 /**
  * The Class Event.
  */
-
-@Deprecated
+@Entity
 public class Event {
-
-
 	
-	/** The name. */
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
+	@Column
 	private String name;
-	
-	/** The short desc. */
+	@Column
 	private String shortDesc;
-	
-	/** The long desc. */
+	@Column
 	private String longDesc;
-	
-	/** The date of event. */
+	@Column
 	private Date dateOfEvent;
-
-	/**
-	 * Instantiates a new event.
-	 */
+	
+	@OneToMany(fetch=FetchType.LAZY)
+	@JoinColumn(name="event_id")
+	private List<EventItem> eventItems;
+	
 	public Event() {
 		// TODO Auto-generated constructor stub
 	}
-
-	/**
-	 * Instantiates a new event.
-	 *
-	 * @param name the name
-	 * @param shortDesc the short desc
-	 * @param longDesc the long desc
-	 * @param dateOfEvent the date of event
-	 */
+	
+	
+	
 	public Event(String name, String shortDesc, String longDesc, Date dateOfEvent) {
 		super();
 		this.name = name;
@@ -47,8 +49,8 @@ public class Event {
 		this.dateOfEvent = dateOfEvent;
 	}
 
-	/** The id. */
-	private int id;
+
+
 	/**
 	 * Gets the id.
 	 *
@@ -57,7 +59,7 @@ public class Event {
 	public int getId() {
 		return id;
 	}
-
+	
 	/**
 	 * Sets the id.
 	 *
@@ -66,7 +68,7 @@ public class Event {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
 	/**
 	 * Gets the name.
 	 *
@@ -75,17 +77,16 @@ public class Event {
 	public String getName() {
 		return name;
 	}
-
+	
 	/**
 	 * Sets the name.
 	 *
-	 * @param name
-	 *            the new name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	/**
 	 * Gets the short desc.
 	 *
@@ -94,17 +95,16 @@ public class Event {
 	public String getShortDesc() {
 		return shortDesc;
 	}
-
+	
 	/**
 	 * Sets the short desc.
 	 *
-	 * @param shortDesc
-	 *            the new short desc
+	 * @param shortDesc the new short desc
 	 */
 	public void setShortDesc(String shortDesc) {
 		this.shortDesc = shortDesc;
 	}
-
+	
 	/**
 	 * Gets the long desc.
 	 *
@@ -113,17 +113,16 @@ public class Event {
 	public String getLongDesc() {
 		return longDesc;
 	}
-
+	
 	/**
 	 * Sets the long desc.
 	 *
-	 * @param longDesc
-	 *            the new long desc
+	 * @param longDesc the new long desc
 	 */
 	public void setLongDesc(String longDesc) {
 		this.longDesc = longDesc;
 	}
-
+	
 	/**
 	 * Gets the date of event.
 	 *
@@ -132,15 +131,24 @@ public class Event {
 	public Date getDateOfEvent() {
 		return dateOfEvent;
 	}
-
+	
 	/**
 	 * Sets the date of event.
 	 *
-	 * @param dateOfEvent
-	 *            the new date of event
+	 * @param dateOfEvent the new date of event
 	 */
 	public void setDateOfEvent(Date dateOfEvent) {
 		this.dateOfEvent = dateOfEvent;
 	}
 
+	public List<EventItem> getEventItems() {
+		return eventItems;
+	}
+
+	public void setEventItems(List<EventItem> eventItems) {
+		this.eventItems = eventItems;
+	}
+	
+
+	
 }

@@ -1,6 +1,8 @@
 package com.kvn.expensetracker.repositories;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.Date;
 
 import javax.transaction.Transactional;
 
@@ -13,15 +15,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.kvn.expensetracker.domainentities.Event;
 import com.kvn.expensetracker.domainentities.EventItem;
-
+import com.kvn.expensetracker.domainentities.EventToEventItem;
 // TODO: Auto-generated Javadoc
+
 /**
- * The Class EventItemRepositoryTest.
+ * The Class EventToEventItemRepositoryTest.
  */
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class EventItemRepositoryTest {
+public class EventToEventItemRepositoryTest {
+	
+	/** The event to event item repository. */
+	@Autowired
+	private EventToEventItemRepository eventToEventItemRepository;
+	
+	/** The events repository. */
+	@Autowired
+	private EventsRepository eventsRepository;
 	
 	/** The event item repository. */
 	@Autowired
@@ -55,24 +67,32 @@ public class EventItemRepositoryTest {
 	}
 
 	/**
-	 * Test should insert event items into repository.
+	 * Test should create events and events items.
 	 */
 	@Test
 	@Transactional
-	public void testShouldInsertEventItemsIntoRepository() {
-		//given
+	public void testShouldCreateEventsAndEventsItems() {
+		//Given
+		//1. create the event
+		Event event = new Event("Movie", "documentation", "longDesc", new Date());
+		event = eventsRepository.saveAndFlush(event);
 		EventItem eventItem = new EventItem();
 		eventItem.setName("Tickets");
-		eventItem.setDesc("Movie tickets for my birth day");
-		eventItem.setTotalEventItemCost(2500.00);
+		eventItem.setDesc("Tickets to movie");
+		eventItem.setTotalEventItemCost(3000.00);
 		eventItem = eventItemRepository.saveAndFlush(eventItem);
-		eventItemRepository.flush();
+		EventToEventItem eventToEventItem = new EventToEventItem();
+		eventToEventItem.setEventId(event.getId());
+		eventToEventItem.setEventItemId(eventItem.getId());
+		
+		eventToEventItem = eventToEventItemRepository.saveAndFlush(eventToEventItem);
 		
 		//when
-		EventItem storedEventItem = eventItemRepository.findById(eventItem.getId()).get();
+		eventToEventItem = eventToEventItemRepository.findById(eventToEventItem.getId()).get();
 		
 		//then
-		assertEquals(eventItem.getName(), storedEventItem.getName());
+		assertNotNull(eventToEventItem);
+		
 		
 	}
 

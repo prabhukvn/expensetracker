@@ -7,12 +7,14 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kvn.expensetracker.domain.EventReport;
-import com.kvn.expensetracker.entities.EventEntity;
-import com.kvn.expensetracker.entities.EventItemEntity;
-import com.kvn.expensetracker.entities.EventItemToMemberAmountEntity;
+import com.kvn.expensetracker.domainentities.Event;
+import com.kvn.expensetracker.domainentities.EventItem;
+import com.kvn.expensetracker.domainentities.EventItemToMemberAmount;
+import com.kvn.expensetracker.domainentities.EventReport;
+import com.kvn.expensetracker.domainentities.EventToEventItem;
 import com.kvn.expensetracker.repositories.EventItemRepository;
 import com.kvn.expensetracker.repositories.EventItemToMemberAmountRepository;
+import com.kvn.expensetracker.repositories.EventToEventItemRepository;
 import com.kvn.expensetracker.repositories.EventsRepository;
 
 // TODO: Auto-generated Javadoc
@@ -22,7 +24,9 @@ import com.kvn.expensetracker.repositories.EventsRepository;
 @Service
 public class EventReportServiceImpl implements EventReportService {
 
-	
+	/** The event to event item repository. */
+	@Autowired
+	private EventToEventItemRepository eventToEventItemRepository;
 	
 	/** The events repository. */
 	@Autowired
@@ -45,14 +49,14 @@ public class EventReportServiceImpl implements EventReportService {
 
 		EventReport eventReport = new EventReport();
 		int eId = Integer.parseInt(eventId);
-		EventEntity event = eventsRepository.findById(eId).get();
+		Event event = eventsRepository.findById(eId).get();
 		if (null != event) {
 			eventReport.setEventName(event.getName());
-			List<EventItemEntity> eventItems = event.getEventItems();
-			eventItems.forEach(eventItem -> {
-				
+			List<EventToEventItem> eventToEventItems = eventToEventItemRepository.findByEventId(eId);
+			eventToEventItems.forEach(eventToEventItem -> {
+				EventItem eventItem = eventItemRepository.findById(eventToEventItem.getEventItemId()).get();
 				if (null != eventItem) {
-					EventItemToMemberAmountEntity eventItemToMemberAmount = eventItemToMemberAmountRepository
+					EventItemToMemberAmount eventItemToMemberAmount = eventItemToMemberAmountRepository
 							.findByEventItemId(eventItem.getId());
 					eventReport.setEventItemToMemberAmount(eventItemToMemberAmount);
 				}

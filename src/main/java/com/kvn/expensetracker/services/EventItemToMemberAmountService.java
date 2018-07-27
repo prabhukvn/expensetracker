@@ -2,7 +2,7 @@ package com.kvn.expensetracker.services;
 
 import java.util.List;
 
-import com.kvn.expensetracker.entities.EventItemToMemberAmountEntity;
+import com.kvn.expensetracker.domainentities.EventItemToMemberAmount;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -16,13 +16,13 @@ public interface EventItemToMemberAmountService {
 	 * @param itemMemberAmount the item member amount
 	 * @return the event item to member amount
 	 */
-	EventItemToMemberAmountEntity create(EventItemToMemberAmountEntity itemMemberAmount);
+	EventItemToMemberAmount create(EventItemToMemberAmount itemMemberAmount);
 
 	/**
 	 * Find all.
 	 *
 	 * @return the list
 	 */
-	List<EventItemToMemberAmountEntity> findAll();
+	List<EventItemToMemberAmount> findAll();
 
 }

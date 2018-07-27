@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.kvn.expensetracker.entities.MemberEntity;
-import com.kvn.expensetracker.entities.MemberAmountEntity;
+import com.kvn.expensetracker.domainentities.Member;
+import com.kvn.expensetracker.domainentities.MemberAmount;
 
 /**
  * @author venkoppu
@@ -54,11 +54,11 @@ public class MemberAmountRepositoryTest {
 	@Test
 	public void testShouldLoadMemebrsAndMembersAmount() {
 
-		MemberEntity member = new MemberEntity("prabhu", "kvn", "prabhukvn@gmail.com", "prabhukvn@gmail.com");
+		Member member = new Member("prabhu", "kvn", "prabhukvn@gmail.com", "prabhukvn@gmail.com");
 		member = membersRepository.saveAndFlush(member);
 		
 		// create amount 
-		MemberAmountEntity memberAmount = new MemberAmountEntity();
+		MemberAmount memberAmount = new MemberAmount();
 		memberAmount.setAmountPaid(15000);
 		memberAmount.setMemberId(member.getId());
 		

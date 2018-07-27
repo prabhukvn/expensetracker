@@ -1,4 +1,4 @@
-package com.kvn.expensetracker.domain;
+package com.kvn.expensetracker.domainentities;
 
 // TODO: Auto-generated Javadoc
 /**

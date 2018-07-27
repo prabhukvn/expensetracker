@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kvn.expensetracker.entities.MemberEntity;
+import com.kvn.expensetracker.domainentities.Member;
 import com.kvn.expensetracker.services.MembersService;
 
 // TODO: Auto-generated Javadoc
@@ -32,10 +32,10 @@ public class MembersController {
 	 * @return the response entity
 	 */
 	@PostMapping(value = "/members", produces = "application/json")
-	public ResponseEntity<MemberEntity> create(MemberEntity member) {
+	public ResponseEntity<Member> create(Member member) {
 
-		MemberEntity newMember = membersService.create(member);
-		return new ResponseEntity<MemberEntity>(newMember, HttpStatus.CREATED);
+		Member newMember = membersService.create(member);
+		return new ResponseEntity<Member>(newMember, HttpStatus.CREATED);
 	}
 
 	/**
@@ -44,9 +44,9 @@ public class MembersController {
 	 * @return the all
 	 */
 	@GetMapping(value = "/members", produces = "application/json")
-	public ResponseEntity<List<MemberEntity>> getAll() {
-		List<MemberEntity> members = membersService.findAll();
-		return new ResponseEntity<List<MemberEntity>>(members, HttpStatus.OK);
+	public ResponseEntity<List<Member>> getAll() {
+		List<Member> members = membersService.findAll();
+		return new ResponseEntity<List<Member>>(members, HttpStatus.OK);
 	}
 	// TODO
 	// GET PUT and DELETE will follwo

@@ -1,6 +1,6 @@
 package com.kvn.expensetracker.services;
 
-import com.kvn.expensetracker.domain.EventReport;
+import com.kvn.expensetracker.domainentities.EventReport;
 
 // TODO: Auto-generated Javadoc
 /**
