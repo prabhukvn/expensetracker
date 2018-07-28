@@ -7,6 +7,7 @@ import com.kvn.expensetracker.domainentities.EventItem;
 /**
  * The Interface EventItemRepository.
  */
+
 public interface EventItemRepository extends JpaRepository<EventItem, Integer>{
 	
 }

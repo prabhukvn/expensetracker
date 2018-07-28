@@ -33,6 +33,20 @@ public class Member {
 	@Column
 	private String email;
 
+	public Member(String firstName, String lastName, String userName, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.email = email;
+	}
+
+
+	public Member() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	/**
 	 * Gets the id.
 	 *
