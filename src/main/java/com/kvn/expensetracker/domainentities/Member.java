@@ -3,6 +3,7 @@ package com.kvn.expensetracker.domainentities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 // TODO: Auto-generated Javadoc
@@ -14,7 +15,7 @@ public class Member {
 
 	/** The id. */
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int id;
 	
 	/** The first name. */
@@ -33,6 +34,20 @@ public class Member {
 	@Column
 	private String email;
 
+	public Member(String firstName, String lastName, String userName, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.email = email;
+	}
+
+
+	public Member() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	/**
 	 * Gets the id.
 	 *

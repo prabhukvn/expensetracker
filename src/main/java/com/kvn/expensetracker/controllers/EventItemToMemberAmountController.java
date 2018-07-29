@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,7 +33,7 @@ public class EventItemToMemberAmountController {
 	 * @return the response entity
 	 */
 	@PostMapping(value = "/eventItemToMemberAmount", produces = "application/json", consumes = "application/json")
-	public ResponseEntity<EventItemToMemberAmount> create(EventItemToMemberAmount itemMemberAmount) {
+	public ResponseEntity<EventItemToMemberAmount> create(@RequestBody EventItemToMemberAmount itemMemberAmount) {
 
 		EventItemToMemberAmount item = eventItemToMemberAmountService.create(itemMemberAmount);
 		return new ResponseEntity<EventItemToMemberAmount>(item, HttpStatus.CREATED);
