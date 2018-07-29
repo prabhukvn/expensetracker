@@ -34,8 +34,8 @@ public class EventItemToMemberAmounServiceImpl implements EventItemToMemberAmoun
 	@Transactional
 	public EventItemToMemberAmount create(EventItemToMemberAmount itemMemberAmount) {
 		// TODO Auto-generated method stub
-		MemberAmount memberAmount = itemMemberAmount.getMemeberAmount();
-		memberAmountRepository.saveAndFlush(memberAmount);
+		List<MemberAmount> memberAmounts = itemMemberAmount.getMemeberAmounts();
+		memberAmountRepository.saveAll(memberAmounts);
 		return eventItemToMemberAmountRepository.save(itemMemberAmount);
 	}
 

@@ -1,7 +1,11 @@
 package com.kvn.expensetracker.domainentities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 // TODO: Auto-generated Javadoc
@@ -19,8 +23,9 @@ public class EventItemToMemberAmount {
 	private int eventItemId;
 	
 	/** The memeber amount. */
-	@OneToOne
-	private MemberAmount memeberAmount;
+	@OneToMany
+	@JoinColumn(name="event_item_id")
+	private List<MemberAmount> memeberAmounts;
 
 	/**
 	 * Gets the id.
@@ -58,22 +63,14 @@ public class EventItemToMemberAmount {
 		this.eventItemId = eventItemId;
 	}
 
-	/**
-	 * Gets the memeber amount.
-	 *
-	 * @return the memeber amount
-	 */
-	public MemberAmount getMemeberAmount() {
-		return memeberAmount;
+	public List<MemberAmount> getMemeberAmounts() {
+		return memeberAmounts;
 	}
 
-	/**
-	 * Sets the memeber amount.
-	 *
-	 * @param memeberAmount the new memeber amount
-	 */
-	public void setMemeberAmount(MemberAmount memeberAmount) {
-		this.memeberAmount = memeberAmount;
+	public void setMemeberAmounts(List<MemberAmount> memeberAmounts) {
+		this.memeberAmounts = memeberAmounts;
 	}
+
+	
 
 }

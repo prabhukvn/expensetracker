@@ -3,6 +3,7 @@ package com.kvn.expensetracker.repositories;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -162,7 +163,9 @@ public class EventsRepositoryTest {
 		// 4 attach eventItemt to member and member amount
 		EventItemToMemberAmount eventItemToMemberAmount = new EventItemToMemberAmount();
 		eventItemToMemberAmount.setEventItemId(eventItem.getId());
-		eventItemToMemberAmount.setMemeberAmount(memberAmount);
+		List<MemberAmount> memeberAmounts = new ArrayList<>();
+		memeberAmounts.add(memberAmount);
+		eventItemToMemberAmount.setMemeberAmounts(memeberAmounts);
 		eventItemToMemberAmountRepository.saveAndFlush(eventItemToMemberAmount);
 		
 		// 5 attach event item to event
