@@ -6,7 +6,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.w3c.dom.stylesheets.LinkStyle;
 
 import com.kvn.expensetracker.domainentities.Event;
 import com.kvn.expensetracker.domainentities.EventItem;
