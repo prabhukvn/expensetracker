@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,7 +33,7 @@ public class MembersController {
 	 * @return the response entity
 	 */
 	@PostMapping(value = "/members", produces = "application/json")
-	public ResponseEntity<Member> create(Member member) {
+	public ResponseEntity<Member> create(@RequestBody Member member) {
 
 		Member newMember = membersService.create(member);
 		return new ResponseEntity<Member>(newMember, HttpStatus.CREATED);

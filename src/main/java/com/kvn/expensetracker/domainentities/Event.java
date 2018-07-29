@@ -1,21 +1,20 @@
 package com.kvn.expensetracker.domainentities;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.SelectBeforeUpdate;
 
 /**
  * The Class Event.
  */
 @Entity
+@SelectBeforeUpdate
 public class Event {
 	
 
@@ -31,9 +30,7 @@ public class Event {
 	@Column
 	private Date dateOfEvent;
 	
-	@OneToMany(fetch=FetchType.LAZY)
-	@JoinColumn(name="event_id")
-	private List<EventItem> eventItems;
+	
 	
 	public Event() {
 		// TODO Auto-generated constructor stub
@@ -141,13 +138,6 @@ public class Event {
 		this.dateOfEvent = dateOfEvent;
 	}
 
-	public List<EventItem> getEventItems() {
-		return eventItems;
-	}
-
-	public void setEventItems(List<EventItem> eventItems) {
-		this.eventItems = eventItems;
-	}
 	
 
 	
