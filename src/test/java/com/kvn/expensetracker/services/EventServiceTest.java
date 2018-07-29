@@ -1,5 +1,7 @@
 package com.kvn.expensetracker.services;
-
+/**
+ * Using Simple Mockito where entire context will not be started.
+ */
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
