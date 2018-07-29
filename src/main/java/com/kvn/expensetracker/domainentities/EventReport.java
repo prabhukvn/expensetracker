@@ -1,5 +1,8 @@
 package com.kvn.expensetracker.domainentities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class EventReport.
@@ -10,7 +13,7 @@ public class EventReport {
 	private String eventName;
 
 	/** The event item to member amount. */
-	private EventItemToMemberAmount eventItemToMemberAmount;
+	private List<EventItemToMemberAmount> eventItemToMemberAmounts = new ArrayList<>();
 
 	/**
 	 * Gets the event name.
@@ -31,27 +34,14 @@ public class EventReport {
 		this.eventName = eventName;
 	}
 
-	/**
-	 * Gets the event item to member amount.
-	 *
-	 * @return the event item to member amount
-	 */
-	/*
-	 * public List<MemberCost> getMemberCostList() { return memberCostList; } public
-	 * void setMemberCostList(List<MemberCost> memberCostList) { this.memberCostList
-	 * = memberCostList; }
-	 */
-	public EventItemToMemberAmount getEventItemToMemberAmount() {
-		return eventItemToMemberAmount;
+	public List<EventItemToMemberAmount> getEventItemToMemberAmounts() {
+		return eventItemToMemberAmounts;
 	}
 
-	/**
-	 * Sets the event item to member amount.
-	 *
-	 * @param eventItemToMemberAmount the new event item to member amount
-	 */
-	public void setEventItemToMemberAmount(EventItemToMemberAmount eventItemToMemberAmount) {
-		this.eventItemToMemberAmount = eventItemToMemberAmount;
+	public void setEventItemToMemberAmounts(List<EventItemToMemberAmount> eventItemToMemberAmounts) {
+		this.eventItemToMemberAmounts = eventItemToMemberAmounts;
 	}
+
+	
 
 }

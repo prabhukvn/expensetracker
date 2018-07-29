@@ -3,10 +3,11 @@ package com.kvn.expensetracker.domainentities;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -17,6 +18,7 @@ public class EventItemToMemberAmount {
 
 	/** The id. */
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
 	/** The event item id. */

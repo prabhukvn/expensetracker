@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.stylesheets.LinkStyle;
 
 import com.kvn.expensetracker.domainentities.Event;
 import com.kvn.expensetracker.domainentities.EventItem;
@@ -56,9 +57,12 @@ public class EventReportServiceImpl implements EventReportService {
 			eventToEventItems.forEach(eventToEventItem -> {
 				EventItem eventItem = eventItemRepository.findById(eventToEventItem.getEventItemId()).get();
 				if (null != eventItem) {
-					EventItemToMemberAmount eventItemToMemberAmount = eventItemToMemberAmountRepository
+					List<EventItemToMemberAmount> eventItemToMemberAmounts = eventItemToMemberAmountRepository
 							.findByEventItemId(eventItem.getId());
-					eventReport.setEventItemToMemberAmount(eventItemToMemberAmount);
+					eventItemToMemberAmounts.forEach(eventItemToMemberAmount->{
+						eventReport.getEventItemToMemberAmounts().add(eventItemToMemberAmount);
+					});
+				
 				}
 			});
 		}

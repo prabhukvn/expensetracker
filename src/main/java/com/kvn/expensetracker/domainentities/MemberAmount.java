@@ -1,6 +1,8 @@
 package com.kvn.expensetracker.domainentities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 // TODO: Auto-generated Javadoc
@@ -12,6 +14,7 @@ public class MemberAmount {
 
 	/** The id. */
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
 	/** The member id. */
