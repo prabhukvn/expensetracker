@@ -65,10 +65,13 @@ public class EventsController {
 	 * @param event the event
 	 * @return the response entity
 	 */
-	@PutMapping(value = "/events", produces = "application/json")
-	public ResponseEntity<Event> updateEvent(@RequestBody Event event) {
+	@PutMapping(value = "/events/{eventId}", produces = "application/json")
+	public ResponseEntity<Event> updateEvent(@PathVariable("eventId") int eventId, @RequestBody Event event) {
 
 		// TODO validate event
+		if(eventId!=0) {
+			event.setId(eventId);
+		}
 		Event createEvent = eventService.updateEvent(event);
 		return new ResponseEntity<>(createEvent, HttpStatus.OK);
 
