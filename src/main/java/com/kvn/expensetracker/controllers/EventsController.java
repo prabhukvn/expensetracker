@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kvn.expensetracker.domainentities.Event;
@@ -50,7 +51,7 @@ public class EventsController {
 	 * @return the response entity
 	 */
 	@PostMapping(value = "/events", produces = "application/json")
-	public ResponseEntity<Event> createEvent(Event event) {
+	public ResponseEntity<Event> createEvent(@RequestBody Event event) {
 
 		// TODO validate event
 		Event createEvent = eventService.createEvent(event);
@@ -65,7 +66,7 @@ public class EventsController {
 	 * @return the response entity
 	 */
 	@PutMapping(value = "/events", produces = "application/json")
-	public ResponseEntity<Event> updateEvent(Event event) {
+	public ResponseEntity<Event> updateEvent(@RequestBody Event event) {
 
 		// TODO validate event
 		Event createEvent = eventService.updateEvent(event);
