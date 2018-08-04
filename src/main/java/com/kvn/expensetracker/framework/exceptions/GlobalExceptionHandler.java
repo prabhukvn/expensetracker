@@ -10,7 +10,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kvn.expensetracker.vo.ExceptionResponse;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class GlobalExceptionHandler.
  */
