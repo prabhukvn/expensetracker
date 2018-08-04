@@ -1,8 +1,8 @@
 package com.kvn.expensetracker.services;
 
 import com.kvn.expensetracker.domainentities.EventReport;
+import com.kvn.expensetracker.framework.performance.EnablePerformanceLogging;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface EventReportService.
  */
@@ -11,9 +11,11 @@ public interface EventReportService {
 	/**
 	 * Generate report.
 	 *
-	 * @param eventId the event id
+	 * @param eventId
+	 *            the event id
 	 * @return the event report
 	 */
+	@EnablePerformanceLogging
 	EventReport generateReport(String eventId);
 
 }

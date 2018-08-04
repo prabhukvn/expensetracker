@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kvn.expensetracker.domainentities.EventReport;
+import com.kvn.expensetracker.framework.performance.EnablePerformanceLogging;
 import com.kvn.expensetracker.services.EventReportService;
 
 // TODO: Auto-generated Javadoc
@@ -34,6 +35,7 @@ public class EventReportController {
 	 * @param eventId the event id
 	 * @return the report
 	 */
+
 	@GetMapping("/report/event/{eventId}")
 	public ResponseEntity<EventReport> getReport(@PathVariable("eventId") String eventId) {
 		LOGGER.debug(">>>>>>>>Generating Report for event {}>>>>>>>>", eventId);

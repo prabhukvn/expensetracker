@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kvn.expensetracker.domainentities.Event;
 import com.kvn.expensetracker.domainentities.EventItem;
+import com.kvn.expensetracker.framework.performance.EnablePerformanceLogging;
 import com.kvn.expensetracker.services.EventService;
 import com.kvn.expensetracker.services.EventToEventItemService;
 
@@ -49,6 +50,7 @@ public class EventsController {
 	 * @param event the event
 	 * @return the response entity
 	 */
+	@EnablePerformanceLogging
 	@PostMapping(value = "/events", produces = "application/json")
 	public ResponseEntity<Event> createEvent(@RequestBody Event event) {
 

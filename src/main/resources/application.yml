@@ -1,0 +1,4 @@
+app:
+ performance:
+   log:
+     enabled: true

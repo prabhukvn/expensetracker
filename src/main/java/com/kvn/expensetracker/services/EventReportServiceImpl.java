@@ -12,6 +12,7 @@ import com.kvn.expensetracker.domainentities.EventItem;
 import com.kvn.expensetracker.domainentities.EventItemToMemberAmount;
 import com.kvn.expensetracker.domainentities.EventReport;
 import com.kvn.expensetracker.domainentities.EventToEventItem;
+import com.kvn.expensetracker.framework.performance.EnablePerformanceLogging;
 import com.kvn.expensetracker.repositories.EventItemRepository;
 import com.kvn.expensetracker.repositories.EventItemToMemberAmountRepository;
 import com.kvn.expensetracker.repositories.EventToEventItemRepository;
@@ -45,6 +46,7 @@ public class EventReportServiceImpl implements EventReportService {
 	 */
 	@Override
 	@Transactional
+	@EnablePerformanceLogging
 	public EventReport generateReport(String eventId) {
 
 		EventReport eventReport = new EventReport();
