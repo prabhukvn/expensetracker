@@ -23,7 +23,6 @@ import com.kvn.expensetracker.domainentities.EventItem;
 import com.kvn.expensetracker.services.EventService;
 import com.kvn.expensetracker.services.EventToEventItemService;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class EventsController.
  *
@@ -68,7 +67,6 @@ public class EventsController {
 	@PutMapping(value = "/events/{eventId}", produces = "application/json")
 	public ResponseEntity<Event> updateEvent(@PathVariable("eventId") int eventId, @RequestBody Event event) {
 
-		// TODO validate event
 		if(eventId!=0) {
 			event.setId(eventId);
 		}
@@ -85,7 +83,6 @@ public class EventsController {
 	@GetMapping(value = "/events", produces = "application/json")
 	public ResponseEntity<List<Event>> getAllEvent() {
 
-		// TODO validate event
 		List<Event> createEvent = eventService.getAllEvents();
 		return new ResponseEntity<>(createEvent, HttpStatus.OK);
 
@@ -100,7 +97,6 @@ public class EventsController {
 	@GetMapping(value = "/events/{eventId}", produces = "application/json")
 	public ResponseEntity<Event> getEvent(@PathVariable("eventId") String eventId) {
 
-		// TODO validate event
 		Event createEvent = eventService.getEvent(Integer.parseInt(eventId));
 		if (createEvent != null) {
 			return new ResponseEntity<>(createEvent, HttpStatus.OK);
@@ -119,7 +115,6 @@ public class EventsController {
 	@GetMapping(value = "/events/{eventId}/eventItems", produces = "application/json")
 	public ResponseEntity<List<EventItem>> getEventItems(@PathVariable("eventId") String eventId) {
 
-		// TODO validate event
 		List<EventItem> eventItems = eventToEventItemService.getEventItems(Integer.parseInt(eventId));
 		if (eventItems != null) {
 			return new ResponseEntity<>(eventItems, HttpStatus.OK);
@@ -128,5 +123,7 @@ public class EventsController {
 		}
 
 	}
+	
+	
 
 }

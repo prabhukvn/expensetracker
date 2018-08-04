@@ -33,7 +33,6 @@ public class EventToEventItemServiceImpl implements EventToEventItemService {
 	 */
 	@Override
 	public List<EventItem> getEventItems(int eventId) {
-		// TODO Auto-generated method stub
 		List<EventToEventItem> eventToEventItems = eventToEventItemRepository.findByEventId(eventId);
 		List<EventItem> eventItems = new ArrayList<>();
 		eventToEventItems.forEach(eventToEventItem -> {
@@ -50,7 +49,6 @@ public class EventToEventItemServiceImpl implements EventToEventItemService {
 	@Override
 	@Transactional
 	public EventToEventItem create(String eventId, String eventItemId) {
-		// TODO Auto-generated method stub
 		EventToEventItem eit = new EventToEventItem();
 		if (null != eventId && null != eventItemId) {
 			eit.setEventId(Integer.parseInt(eventId));
