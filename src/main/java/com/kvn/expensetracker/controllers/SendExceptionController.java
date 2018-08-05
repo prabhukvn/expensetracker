@@ -2,6 +2,7 @@ package com.kvn.expensetracker.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.metrics.annotation.Timed;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,6 +10,7 @@ import com.kvn.expensetracker.framework.exceptions.BusinessExceptions;
 
 @RestController
 @RequestMapping("/api")
+@Timed
 public class SendExceptionController {
 
 	@RequestMapping("/exception")
