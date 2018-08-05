@@ -23,6 +23,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<metrics.version></metrics.version>
 	</properties>
 
 	<dependencies>
@@ -78,6 +79,24 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!-- Atalas Configuration -->
+		<!-- 
+		<dependency>
+			<groupId>org.springframework.metrics</groupId>
+			<artifactId>spring-metrics</artifactId>
+			<version>${metrics.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.netflix.spectator</groupId>
+			<artifactId>spectator-reg-atlas</artifactId>
+			<version>${spectator.version}</version>
+		</dependency>
+		-->
 
 	</dependencies>
 
