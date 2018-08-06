@@ -8,13 +8,9 @@ This is a simple spring boot project.
 
 
 Pending:
-1. Test cases
-2. Error Handling
-3. Some more Scenarios
 4. domain and entities are considered as same for simplicity. these should be different.
 5. services interface and implementation classes are in same package for simplicity.
-6. no profiles
-7. limitations not covered
+
 
    
 
