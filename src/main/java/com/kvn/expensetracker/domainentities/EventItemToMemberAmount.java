@@ -9,11 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class EventItemToMemberAmount.
  */
 @Entity
+@Cache(region="common", usage = CacheConcurrencyStrategy.READ_WRITE) 
 public class EventItemToMemberAmount {
 
 	/** The id. */
