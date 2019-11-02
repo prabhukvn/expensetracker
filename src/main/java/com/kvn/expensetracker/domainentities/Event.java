@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.SelectBeforeUpdate;
 
 /**
@@ -15,6 +17,7 @@ import org.hibernate.annotations.SelectBeforeUpdate;
  */
 @Entity
 @SelectBeforeUpdate
+@Cache(region="common", usage = CacheConcurrencyStrategy.READ_WRITE) 
 public class Event {
 	
 

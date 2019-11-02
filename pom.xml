@@ -118,6 +118,12 @@
 			<version>3.0.0</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- Redissson hibernate integration -->
+		<dependency>
+			<groupId>org.redisson</groupId>
+			<artifactId>redisson-hibernate-52</artifactId>
+			<version>3.10.2</version>
+		</dependency>
 
 
 
