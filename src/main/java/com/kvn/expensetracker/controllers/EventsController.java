@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.metrics.annotation.Timed;
+import org.springframework.metrics.instrument.MeterRegistry;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +34,7 @@ import com.kvn.expensetracker.services.EventToEventItemService;
  */
 @Controller
 @RequestMapping("/api")
+@Timed
 public class EventsController {
 	
 	/** The logger. */
@@ -44,7 +47,8 @@ public class EventsController {
 	/** The event to event item service. */
 	@Autowired
 	private EventToEventItemService eventToEventItemService;
-
+	@Autowired
+	private MeterRegistry meterRegistry;
 	/**
 	 * Creates the event.
 	 *
@@ -54,9 +58,11 @@ public class EventsController {
 
 	@EnablePerformanceLogging
 	@PostMapping(value = "/events", produces = "application/json")
+	@Timed
 	public ResponseEntity<Event> createEvent(@RequestBody Event event) {
 
 		// TODO validate event
+
 		Event createEvent = eventService.createEvent(event);
 		return new ResponseEntity<>(createEvent, HttpStatus.CREATED);
 

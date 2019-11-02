@@ -3,6 +3,11 @@ package com.kvn.expensetracker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
+import com.ryantenney.metrics.spring.config.annotation.MetricsConfigurerAdapter;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -12,6 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @EnableAutoConfiguration
+@EnableMetrics(proxyTargetClass = true)
 public class ExpensetrackerApplication {
 
 	/**
@@ -23,5 +29,9 @@ public class ExpensetrackerApplication {
 		SpringApplication.run(ExpensetrackerApplication.class, args);
 	}
 
+	@Bean
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
+	}
 	
 }
