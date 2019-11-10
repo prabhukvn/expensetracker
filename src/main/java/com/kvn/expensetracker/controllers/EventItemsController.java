@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kvn.expensetracker.domainentities.EventItem;
 import com.kvn.expensetracker.services.EventItemService;
+import org.springframework.http.MediaType;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -34,7 +35,7 @@ public class EventItemsController {
 	 * @param eventItem the event item
 	 * @return the response entity
 	 */
-	@PostMapping(value="/eventItems", produces = "application/json", consumes="application/json")
+	@PostMapping(value="/eventItems", produces = MediaType.APPLICATION_JSON_VALUE, consumes="application/json")
 	public ResponseEntity<EventItem> create(@RequestBody EventItem eventItem) {
 		
 		EventItem newEventItem = eventItemService.create(eventItem);

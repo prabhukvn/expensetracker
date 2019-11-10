@@ -20,7 +20,7 @@ public class Member {
 	/** The id. */
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	public int id;
+	private int id;
 	
 	/** The first name. */
 	@Column

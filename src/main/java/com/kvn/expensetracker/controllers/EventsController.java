@@ -9,16 +9,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.metrics.annotation.Timed;
 import org.springframework.metrics.instrument.MeterRegistry;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.kvn.expensetracker.domainentities.Event;
 import com.kvn.expensetracker.domainentities.EventItem;
@@ -31,7 +32,7 @@ import com.kvn.expensetracker.services.EventToEventItemService;
  *
  * @author venkoppu
  */
-@Controller
+@RestController
 @RequestMapping("/api")
 @Timed
 public class EventsController {
@@ -56,7 +57,7 @@ public class EventsController {
 	 */
 
 	@EnablePerformanceLogging
-	@PostMapping(value = "/events", produces = "application/json")
+	@PostMapping(value = "/events", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	public ResponseEntity<Event> createEvent(@RequestBody Event event) {
 
@@ -73,7 +74,7 @@ public class EventsController {
 	 * @param event the event
 	 * @return the response entity
 	 */
-	@PutMapping(value = "/events/{eventId}", produces = "application/json")
+	@PutMapping(value = "/events/{eventId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Event> updateEvent(@PathVariable("eventId") int eventId, @RequestBody Event event) {
 
 		if(eventId!=0) {
@@ -89,7 +90,7 @@ public class EventsController {
 	 *
 	 * @return the all event
 	 */
-	@GetMapping(value = "/events", produces = "application/json")
+	@GetMapping(value = "/events", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Event>> getAllEvent() {
 
 		List<Event> createEvent = eventService.getAllEvents();
@@ -103,7 +104,7 @@ public class EventsController {
 	 * @param eventId the event id
 	 * @return the event
 	 */
-	@GetMapping(value = "/events/{eventId}", produces = "application/json")
+	@GetMapping(value = "/events/{eventId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Event> getEvent(@PathVariable("eventId") String eventId) {
 
 		Event createEvent = eventService.getEvent(Integer.parseInt(eventId));
@@ -121,7 +122,7 @@ public class EventsController {
 	 * @param eventId the event id
 	 * @return the event items
 	 */
-	@GetMapping(value = "/events/{eventId}/eventItems", produces = "application/json")
+	@GetMapping(value = "/events/{eventId}/eventItems", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<EventItem>> getEventItems(@PathVariable("eventId") String eventId) {
 
 		List<EventItem> eventItems = eventToEventItemService.getEventItems(Integer.parseInt(eventId));
